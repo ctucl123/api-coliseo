@@ -9,6 +9,7 @@ class GpiosManager():
         self.semaforo = 20
         self.cruz_roja = 16
         self.flecha_verde = 12
+        self.sensor = 26
         #configuraciones de salidas y entradas
         GPIO.setup(self.electroiman, GPIO.OUT)
         GPIO.setup(self.semaforo, GPIO.OUT)
