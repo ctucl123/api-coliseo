@@ -1,41 +1,93 @@
-<html></html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Menu</title>
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Botones */
+        .custom-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Mensaje de resultado */
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        @media (max-width: 480px) {
+            .custom-button {
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            .title {
+                font-size: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-	<div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
-		<div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
-			<div class="formbg-outer">
-				<div class="formbg">
-					<div class=" padding-horizontal--48">
-						<span class="padding-bottom--15">Configuraciones</span>
-						<form id="stripe-login" method="post">
-				
-						
-						
-							<div class=" padding-bottom--24">
-								<button class="custom-button" type="submit" name="operation" value="ReadSensor" />Leer Sensor</button>
-							</div>	
-							<div class=" padding-bottom--24">
-								<button class="custom-button" type="submit" name="operation" value="TestLuzLed" />LuzLed</button>
-							</div>
-							<div class=" padding-bottom--24">
-								<button class="custom-button" type="submit" name="operation" value="generatePass" />Generar Pase</button>
-							</div>
-							
-						</form>
-						{% if result is not none %}
-							<h2>Resultado: {{ result }}</h2>
-						{% endif %}
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="title">Configuraciones</div>
+        <form id="menu-form" method="post">
+            <button class="custom-button" type="submit" name="operation" value="ReadSensor">Leer Sensor</button>
+            <button class="custom-button" type="submit" name="operation" value="TestLuzLed">Luz Led</button>
+            <button class="custom-button" type="submit" name="operation" value="generatePass">Generar Pase</button>
+        </form>
+        {% if result is not none %}
+        <div class="result">Resultado: {{ result }}</div>
+        {% endif %}
+    </div>
 </body>
-
 </html>
