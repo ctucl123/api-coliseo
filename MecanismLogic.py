@@ -10,12 +10,12 @@ def timer(target_time):
     if doors.ReadSensor() == True:
         doors.doorOpen()
         inicio = time.time()
-        while time.time() - inicio < target_time:
+        while time.time() - inicio < 10:
             if doors.ReadSensor() == False:
                 timeaux = time.time()
                 while doors.ReadSensor() == False:
                     time.sleep(0.1)
-                    if time.time() - timeaux >= target_time:
+                    if time.time() - timeaux >= 10:
                         doors.doorClose()
                         break
                 doors.doorClose() 
