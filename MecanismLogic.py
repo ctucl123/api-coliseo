@@ -34,7 +34,7 @@ class Manager(threading.Thread):
         while not self.stop_event.is_set():
             with self.rs232.lock:
                 if self.activatePass >0:
-                    temporizador_thread = threading.Thread(target=timer,args=(self.time_door))
+                    temporizador_thread = threading.Thread(target=timer,args=(self.time_door,))
                     temporizador_thread.start()
                     aux_pass =  self.activatePass - 1
                     if aux_pass < 0:
