@@ -42,6 +42,10 @@ class Manager(threading.Thread):
                     else:
                         self.activatePass = aux_pass
                     temporizador_thread.join()
+                elif self.rs232.validation:
+                    temporizador_thread = threading.Thread(target=timer,args=(self.time_door,))
+                    temporizador_thread.start()
+                    temporizador_thread.join()
             time.sleep(0.1)
 
     def generatePass(self):
